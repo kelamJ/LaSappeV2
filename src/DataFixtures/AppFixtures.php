@@ -36,7 +36,7 @@ class AppFixtures extends Fixture
         for ($usr = 0; $usr < 5; ++$usr) {
             $user = new Utilisateur();
             $user->setUtilNom('Malek')
-                ->setEmail('admin@mail.fr')
+                ->setEmail($this->faker->email)
                 ->setPassword($this->passwordEncoder->hashPassword($user, 'password'))
                 ->setUtilType($this->faker->randomElement(['Particulier', 'Professionnel']))
                 ->setRoles(['ROLE_USER'])

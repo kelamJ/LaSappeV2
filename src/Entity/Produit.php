@@ -35,7 +35,6 @@ class Produit
     private ?bool $isActive = null;
 
     #[ORM\ManyToOne(inversedBy: 'produit')]
-    #[ORM\JoinColumn(nullable: true)]
     private ?Panier $panier = null;
 
     #[ORM\OneToMany(mappedBy: 'articlesPanier', targetEntity: ArticlePanier::class, orphanRemoval: true)]

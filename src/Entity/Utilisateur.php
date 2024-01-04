@@ -50,7 +50,6 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     private Collection $commandes;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
     private ?Panier $panier = null;
 
     public function __construct()
