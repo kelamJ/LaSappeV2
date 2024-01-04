@@ -1,118 +1,141 @@
+{#{% extends 'base.html.twig' %}#}
+
+{#{% block title %}Hello PanierController!{% endblock %}#}
+
+{#{% block body %}#}
+{#    <section class="items-center py-24 font-poppins">#}
+{#        <div class="p-8 justify-center flex-1 max-w-6xl px-4 py-6 mx-auto lg:py-4 md:px-6">#}
+{#            <h2 class="mb-10 mt-10 text-4xl font-bold text-center dark:text-gray-950">Votre panier</h2>#}
+{#            <div class="mb-10">#}
+{#                <div class="relative flex flex-wrap items-center pb-8 mb-8 -mx-4 border-b border-gray-200 dark:border-gray-500 xl:justify-between border-opacity-40">#}
+{#                    <div class="w-full mb-4 md:mb-0 h-96 md:h-44 md:w-56">#}
+{#                        <img src="/build/image/card-img.jpeg" alt="" class="object-cover rounded w-full h-full">#}
+{#                    </div>#}
+{#                    <div class="w-full px-4 mb-6 md:w-96 xl:mb-0">#}
+{#                        <a class="block mb-5 text-xl font-medium dark:text-gray-400 hover:underline" href="#">#}
+{#                            Produit 1</a>#}
+{#                        <div class="flex flex-wrap">#}
+{#                            <p class="text-sm font-medium dark:text-gray-400">#}
+{#                                <span>Taille :</span>#}
+{#                                <span class="ml-2 text-gray-400">39</span>#}
+{#                            </p>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="w-full px-4 mt-6 mb-6 xl:w-auto xl:mb-0 xl:mt-0">#}
+{#                        <div class="flex items-center">#}
+{#                            <h2 class="mr-4 font-medium dark:text-gray-400">Qte:</h2>#}
+{#                            <span class="cursor-pointer rounded-l bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500#}
+{#                            hover:text-blue-50"> - </span>#}
+{#                            <input class="h-8 w-8 border bg-white text-center text-xs outline-none" type="number" value="2" min="1" />#}
+{#                            <span class="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50"> + </span>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="w-full px-4 mb-6 xl:w-auto xl:mb-0 xl:mt-0">#}
+{#                        <button class="bg-gradient-to-r from-purple-400 to-blue-500 hover:from-pink-500 hover:to-purple-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transform transition-all duration-500 ease-in-out hover:scale-110 hover:brightness-110 hover:animate-pulse active:animate-bounce">#}
+{#                            Supprimer#}
+{#                        </button>#}
+{#                    </div>#}
+{#                    <div class="w-full px-4 xl:w-auto">#}
+{#                        <span class="text-xl font-medium text-blue-500 dark:text-blue-400">#}
+{#                        <span>100</span>#}
+{#                            <span class="text-sm">€</span>#}
+{#                        </span>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="relative flex flex-wrap items-center pb-8 mb-8 -mx-4 border-b border-gray-200 dark:border-gray-500 xl:justify-between border-opacity-40">#}
+{#                    <div class="w-full mb-4 md:mb-0 h-96 md:h-44 md:w-56">#}
+{#                        <img src="/build/image/card-img.jpeg" alt="" class="object-cover rounded w-full h-full">#}
+{#                    </div>#}
+{#                    <div class="w-full px-4 mb-6 md:w-96 xl:mb-0">#}
+{#                        <a class="block mb-5 text-xl font-medium dark:text-gray-400 hover:underline" href="#">#}
+{#                            Produit 2</a>#}
+{#                        <div class="flex flex-wrap">#}
+{#                            <p class="text-sm font-medium dark:text-gray-400">#}
+{#                                <span>Taille :</span>#}
+{#                                <span class="ml-2 text-gray-400">34</span>#}
+{#                            </p>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="w-full px-4 mt-6 mb-6 xl:w-auto xl:mb-0 xl:mt-0">#}
+{#                        <div class="flex items-center">#}
+{#                            <h2 class="mr-4 font-medium dark:text-gray-400">Qte:</h2>#}
+{#                            <span class="cursor-pointer rounded-l bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500#}
+{#                            hover:text-blue-50"> - </span>#}
+{#                            <input class="h-8 w-8 border bg-white text-center text-xs outline-none" type="number" value="2" min="1" />#}
+{#                            <span class="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50"> + </span>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="w-full px-4 mb-6 xl:w-auto xl:mb-0 xl:mt-0">#}
+{#                        <button class="bg-gradient-to-r from-purple-400 to-blue-500 hover:from-pink-500 hover:to-purple-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transform transition-all duration-500 ease-in-out hover:scale-110 hover:brightness-110 hover:animate-pulse active:animate-bounce">#}
+{#                            Supprimer#}
+{#                        </button>#}
+{#                    </div>#}
+{#                    <div class="w-full px-4 xl:w-auto">#}
+{#                        <span class="text-xl font-medium text-blue-500 dark:text-blue-400">#}
+{#                        <span>99.99</span>#}
+{#                            <span class="text-sm">€</span>#}
+{#                        </span>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="mb-10">#}
+{#                <div class="px-10 py-3 bg-gray-100 rounded-md bg-gray-800">#}
+{#                    <div class="flex justify-between dark:text-gray-400">#}
+{#                        <span class="font-medium">Sous-Total</span>#}
+{#                        <span class="font-bold ">199.99 €</span>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="px-10 py-3 rounded-md">#}
+{#                    <div class="flex justify-between dark:text-gray-400">#}
+{#                        <span class="font-medium">Transport</span>#}
+{#                        <span class="font-bold ">100.00 €</span>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="px-10 py-3 bg-gray-100 rounded-md bg-gray-800">#}
+{#                    <div class="flex justify-between dark:text-gray-400">#}
+{#                        <span class="font-medium">Tax</span>#}
+{#                        <span class="font-bold ">10.00 €</span>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="px-10 py-3 rounded-full dark:text-gray-400">#}
+{#                    <div class="flex justify-between">#}
+{#                        <span class="text-base font-bold md:text-xl ">Commande total</span>#}
+{#                        <span class="font-bold ">309.99 €</span>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="text-right">#}
+{#                <a class="inline-block w-full px-8 py-4 mb-4 mr-6 font-bold text-center uppercase transition#}
+{#                duration-200 bg-gray-100 border rounded-md dark:hover:bg-gray-900 dark:text-gray-400#}
+{#                dark:border-gray-800 dark:bg-gray-800 md:mb-0 md:w-auto hover:bg-gray-200 " href="#">Continuer les#}
+{#                    achats</a>#}
+{#                <a class="inline-block w-full px-8 py-4 font-bold text-center text-white uppercase transition#}
+{#                duration-200 bg-blue-500 rounded-md md:w-auto hover:bg-blue-600 " href="#">Aller au paiement</a>#}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
+
+{#{% endblock %}#}
+
+{# templates/panier/index.html.twig #}
+
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PanierController!{% endblock %}
+{% block title %}Panier{% endblock %}
 
 {% block body %}
-    <section class="items-center py-24 font-poppins">
-        <div class="p-8 justify-center flex-1 max-w-6xl px-4 py-6 mx-auto lg:py-4 md:px-6">
-            <h2 class="mb-10 mt-10 text-4xl font-bold text-center dark:text-gray-950">Votre panier</h2>
-            <div class="mb-10">
-                <div class="relative flex flex-wrap items-center pb-8 mb-8 -mx-4 border-b border-gray-200 dark:border-gray-500 xl:justify-between border-opacity-40">
-                    <div class="w-full mb-4 md:mb-0 h-96 md:h-44 md:w-56">
-                        <img src="/build/image/card-img.jpeg" alt="" class="object-cover rounded w-full h-full">
-                    </div>
-                    <div class="w-full px-4 mb-6 md:w-96 xl:mb-0">
-                        <a class="block mb-5 text-xl font-medium dark:text-gray-400 hover:underline" href="#">
-                            Produit 1</a>
-                        <div class="flex flex-wrap">
-                            <p class="text-sm font-medium dark:text-gray-400">
-                                <span>Taille :</span>
-                                <span class="ml-2 text-gray-400">39</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="w-full px-4 mt-6 mb-6 xl:w-auto xl:mb-0 xl:mt-0">
-                        <div class="flex items-center">
-                            <h2 class="mr-4 font-medium dark:text-gray-400">Qte:</h2>
-                            <span class="cursor-pointer rounded-l bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500
-                            hover:text-blue-50"> - </span>
-                            <input class="h-8 w-8 border bg-white text-center text-xs outline-none" type="number" value="2" min="1" />
-                            <span class="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50"> + </span>
-                        </div>
-                    </div>
-                    <div class="w-full px-4 mb-6 xl:w-auto xl:mb-0 xl:mt-0">
-                        <button class="bg-gradient-to-r from-purple-400 to-blue-500 hover:from-pink-500 hover:to-purple-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transform transition-all duration-500 ease-in-out hover:scale-110 hover:brightness-110 hover:animate-pulse active:animate-bounce">
-                            Supprimer
-                        </button>
-                    </div>
-                    <div class="w-full px-4 xl:w-auto">
-                        <span class="text-xl font-medium text-blue-500 dark:text-blue-400">
-                        <span>100</span>
-                            <span class="text-sm">€</span>
-                        </span>
-                    </div>
-                </div>
-                <div class="relative flex flex-wrap items-center pb-8 mb-8 -mx-4 border-b border-gray-200 dark:border-gray-500 xl:justify-between border-opacity-40">
-                    <div class="w-full mb-4 md:mb-0 h-96 md:h-44 md:w-56">
-                        <img src="/build/image/card-img.jpeg" alt="" class="object-cover rounded w-full h-full">
-                    </div>
-                    <div class="w-full px-4 mb-6 md:w-96 xl:mb-0">
-                        <a class="block mb-5 text-xl font-medium dark:text-gray-400 hover:underline" href="#">
-                            Produit 2</a>
-                        <div class="flex flex-wrap">
-                            <p class="text-sm font-medium dark:text-gray-400">
-                                <span>Taille :</span>
-                                <span class="ml-2 text-gray-400">34</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="w-full px-4 mt-6 mb-6 xl:w-auto xl:mb-0 xl:mt-0">
-                        <div class="flex items-center">
-                            <h2 class="mr-4 font-medium dark:text-gray-400">Qte:</h2>
-                            <span class="cursor-pointer rounded-l bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500
-                            hover:text-blue-50"> - </span>
-                            <input class="h-8 w-8 border bg-white text-center text-xs outline-none" type="number" value="2" min="1" />
-                            <span class="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50"> + </span>
-                        </div>
-                    </div>
-                    <div class="w-full px-4 mb-6 xl:w-auto xl:mb-0 xl:mt-0">
-                        <button class="bg-gradient-to-r from-purple-400 to-blue-500 hover:from-pink-500 hover:to-purple-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transform transition-all duration-500 ease-in-out hover:scale-110 hover:brightness-110 hover:animate-pulse active:animate-bounce">
-                            Supprimer
-                        </button>
-                    </div>
-                    <div class="w-full px-4 xl:w-auto">
-                        <span class="text-xl font-medium text-blue-500 dark:text-blue-400">
-                        <span>99.99</span>
-                            <span class="text-sm">€</span>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="mb-10">
-                <div class="px-10 py-3 bg-gray-100 rounded-md bg-gray-800">
-                    <div class="flex justify-between dark:text-gray-400">
-                        <span class="font-medium">Sous-Total</span>
-                        <span class="font-bold ">199.99 €</span>
-                    </div>
-                </div>
-                <div class="px-10 py-3 rounded-md">
-                    <div class="flex justify-between dark:text-gray-400">
-                        <span class="font-medium">Transport</span>
-                        <span class="font-bold ">100.00 €</span>
-                    </div>
-                </div>
-                <div class="px-10 py-3 bg-gray-100 rounded-md bg-gray-800">
-                    <div class="flex justify-between dark:text-gray-400">
-                        <span class="font-medium">Tax</span>
-                        <span class="font-bold ">10.00 €</span>
-                    </div>
-                </div>
-                <div class="px-10 py-3 rounded-full dark:text-gray-400">
-                    <div class="flex justify-between">
-                        <span class="text-base font-bold md:text-xl ">Commande total</span>
-                        <span class="font-bold ">309.99 €</span>
-                    </div>
-                </div>
-            </div>
-            <div class="text-right">
-                <a class="inline-block w-full px-8 py-4 mb-4 mr-6 font-bold text-center uppercase transition
-                duration-200 bg-gray-100 border rounded-md dark:hover:bg-gray-900 dark:text-gray-400
-                dark:border-gray-800 dark:bg-gray-800 md:mb-0 md:w-auto hover:bg-gray-200 " href="#">Continuer les
-                    achats</a>
-                <a class="inline-block w-full px-8 py-4 font-bold text-center text-white uppercase transition
-                duration-200 bg-blue-500 rounded-md md:w-auto hover:bg-blue-600 " href="#">Aller au paiement</a>
-            </div>
-        </div>
-    </section>
+    <h2>Votre panier</h2>
 
+    {% if cartItems is empty %}
+        <p>Votre panier est vide.</p>
+    {% else %}
+        <ul>
+            {% for cartItem in cartItems %}
+                <li>{{ cartItem.produit.nom }} - Quantité : {{ cartItem.quantite }} - Prix unitaire : {{ cartItem
+                    .produit.prix }} €</li>
+            {% endfor %}
+        </ul>
+
+        <p>Total : {{ total }} €</p>
+    {% endif %}
 {% endblock %}

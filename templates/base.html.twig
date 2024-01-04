@@ -13,6 +13,7 @@
         {% endblock %}
 
         {% block javascripts %}
+            <script src="{{ asset('panier.js') }}"
             {{ encore_entry_script_tags('app') }}
 {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
@@ -22,7 +23,7 @@
     {%  include "partiels/searchBar.html.twig" %}
     {% block body %}
 
-        {% endblock %}
+    {% endblock %}
     {%  include "partiels/footer.html.twig" %}
 
     </body>

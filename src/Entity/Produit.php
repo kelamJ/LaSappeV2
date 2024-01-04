@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProduitRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -31,6 +33,30 @@ class Produit
 
     #[ORM\Column]
     private ?bool $isActive = null;
+
+    #[ORM\ManyToOne(inversedBy: 'produit')]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?Panier $panier = null;
+
+    #[ORM\OneToMany(mappedBy: 'articlesPanier', targetEntity: ArticlePanier::class, orphanRemoval: true)]
+    private Collection $articlePanier;
+
+    #[ORM\ManyToOne(inversedBy: 'produit')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Fournisseur $fournisseur = null;
+
+    #[ORM\ManyToOne(inversedBy: 'produits')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Categorie $categorie = null;
+
+    #[ORM\OneToMany(mappedBy: 'produit', targetEntity: CommandeDetail::class, cascade: ['remove'],orphanRemoval: true)]
+    private Collection $comDetail;
+
+    public function __construct()
+    {
+        $this->articlePanier = new ArrayCollection();
+        $this->comDetail = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -105,6 +131,102 @@ class Produit
     public function setIsActive(bool $isActive): static
     {
         $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    public function getCart(): ?Panier
+    {
+        return $this->panier;
+    }
+
+    public function setCart(?Panier $panier): static
+    {
+        $this->panier = $panier;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ArticlePanier>
+     */
+    public function getArticlePanier(): Collection
+    {
+        return $this->articlePanier;
+    }
+
+    public function addArticlePanier(ArticlePanier $articlePanier): static
+    {
+        if (!$this->articlePanier->contains($articlePanier)) {
+            $this->articlePanier->add($articlePanier);
+            $articlePanier->setArticlesPanier($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArticlePanier(ArticlePanier $articlePanier): static
+    {
+        if ($this->articlePanier->removeElement($articlePanier)) {
+            // set the owning side to null (unless already changed)
+            if ($articlePanier->getArticlesPanier() === $this) {
+                $articlePanier->setArticlesPanier(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getFournisseur(): ?Fournisseur
+    {
+        return $this->fournisseur;
+    }
+
+    public function setFournisseur(?Fournisseur $fournisseur): static
+    {
+        $this->fournisseur = $fournisseur;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): static
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, CommandeDetail>
+     */
+    public function getComDetail(): Collection
+    {
+        return $this->comDetail;
+    }
+
+    public function addComDetail(CommandeDetail $comDetail): static
+    {
+        if (!$this->comDetail->contains($comDetail)) {
+            $this->comDetail->add($comDetail);
+            $comDetail->setProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComDetail(CommandeDetail $comDetail): static
+    {
+        if ($this->comDetail->removeElement($comDetail)) {
+            // set the owning side to null (unless already changed)
+            if ($comDetail->getProduit() === $this) {
+                $comDetail->setProduit(null);
+            }
+        }
 
         return $this;
     }
