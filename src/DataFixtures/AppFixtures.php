@@ -3,7 +3,10 @@
 namespace App\DataFixtures;
 
 use App\Entity\Categorie;
+use App\Entity\Commande;
+use App\Entity\CommandeDetail;
 use App\Entity\Fournisseur;
+use App\Entity\Paiement;
 use App\Entity\Produit;
 use App\Entity\Utilisateur;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -11,6 +14,7 @@ use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use Faker\Generator;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use function Symfony\Component\Clock\now;
 
 class AppFixtures extends Fixture
 {
@@ -28,7 +32,7 @@ class AppFixtures extends Fixture
             ->setPassword($this->passwordEncoder->hashPassword($admin, 'admin'))
             ->setUtilType('Admin')
             ->setRoles(['ROLE_ADMIN'])
-            ->setUtilAdresse($this->faker->streetAddress)
+            ->setUtilAdresse('38 Rue Dame Jeanne Amiens')
             ->setUtilReference(uniqid())
             ->setUtilCoef(0);
         $manager->persist($admin);
@@ -222,6 +226,75 @@ class AppFixtures extends Fixture
             ->setImage("boxerL.png")
             ->setIsActive(true);
         $manager->persist($pro10);
+
+        $com1 = new Commande();
+        $com1->setUtilisateur($admin)
+            ->setComDate(new \DateTime('2024-01-04'))
+            ->setComLivAdresse('38 Rue Dame Jeanne Amiens')
+            ->setComFactureAdresse('38 Rue Dame Jeanne Amiens')
+            ->setComReduction(1)
+            ->setComStatutPaie(true)
+            ->setComEnvoieStatut('Envoyé');
+        $manager->persist($com1);
+
+        $com2 = new Commande();
+        $com2->setUtilisateur($admin)
+            ->setComDate(new \DateTime('2024-01-04'))
+            ->setComLivAdresse('38 Rue Dame Jeanne Amiens')
+            ->setComFactureAdresse('38 Rue Dame Jeanne Amiens')
+            ->setComReduction(1)
+            ->setComStatutPaie(false)
+            ->setComEnvoieStatut('En attente de paiement');
+        $manager->persist($com2);
+
+        $paie1 = new Paiement();
+        $paie1->setMethodePaiement('Paypal')
+            ->setDatePaiement(new \DateTime('2024-01-04'))
+            ->setMontantPaiement(100)
+            ->setPaiements($com1);
+            $manager->persist($paie1);
+
+        $paie2 = new Paiement();
+        $paie2->setMethodePaiement('Paypal')
+            ->setDatePaiement(new \DateTime('2024-01-04'))
+            ->setMontantPaiement(105)
+            ->setPaiements($com2);
+        $manager->persist($paie2);
+
+        $detailCom1 = new CommandeDetail();
+        $detailCom1->setCommandes($com1)
+            ->setProduit($pro6)
+            ->setComDetailPrix(80)
+            ->setQuantite(1);
+        $manager->persist($detailCom1);
+
+        $detailCom2 = new CommandeDetail();
+        $detailCom2->setCommandes($com1)
+            ->setProduit($pro2)
+            ->setComDetailPrix(20)
+            ->setQuantite(1);
+        $manager->persist($detailCom2);
+
+        $detailCom3 = new CommandeDetail();
+        $detailCom3->setCommandes($com2)
+            ->setProduit($pro5)
+            ->setComDetailPrix(40)
+            ->setQuantite(1);
+        $manager->persist($detailCom3);
+
+        $detailCom4 = new CommandeDetail();
+        $detailCom4->setCommandes($com2)
+            ->setProduit($pro8)
+            ->setComDetailPrix(40)
+            ->setQuantite(1);
+        $manager->persist($detailCom4);
+
+        $detailCom5 = new CommandeDetail();
+        $detailCom5->setCommandes($com2)
+            ->setProduit($pro4)
+            ->setComDetailPrix(25)
+            ->setQuantite(1);
+        $manager->persist($detailCom5);
 
         $manager->flush();
     }
